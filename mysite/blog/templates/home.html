@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in objec_list %}
+    <div class="post-entry">
+        <h2><a href="">{{post.title}}</a></h2>
+    </div>
+    {% endfor %}
+{% endblock %}
