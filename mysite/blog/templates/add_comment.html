@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Comment on Blog Post{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h2>New Post</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="Add Comment">
+    </form>
+
+{% else %}
+Login to comment on this post!.
+
+{% endif %}
+
+{% endblock %}
