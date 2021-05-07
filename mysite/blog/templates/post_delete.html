@@ -1,19 +1,39 @@
-{% extends 'base.html' %}
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Django Blog</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+   <header>
+       <div class="nav-left">
+           <h2><a href="{% url 'home' %}">My Django Blog</a></h2>
+       </div>
+       {% if user.is_authenticated %}
+        <div class="nav-right1">
+            <a href="{% url 'post_new' %}">New Post</a>
+        </div>
+        <div class="nav-right4">
+            <a href="{% url 'edit_profile' %}">Edit Profile</a>
+        </div>
+        <div class="nav-right5">
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+       {% else %}
+        <div class="nav-right2">
+            <a href="{% url 'register' %}">Register</a>
+        </div>
+        <div class="nav-right3">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
 
-{% block content %}
-
-{% if user.is_authenticated %}
-     <h2>Delete</h2>
-        <form action="" method="post">
-            {% csrf_token %}
-            <p>Are you sure you want to delete this post? "{{ post.title }}"</p>
-            <input type="submit" value="Confirm">
-        </form> 
-
-{% else %}
- You're not allowed to delete this post!.
-        
-{% endif %}
-
-{% endblock %}
+       {% endif %}  
+   </header> 
+   <div>
+       {% block content %}
+       {% endblock %}
+   </div>
+</body>
+</html>
