@@ -32,3 +32,4 @@ class AddCommentView(CreateView):
     #form_class = PostForm
     template_name = 'add_comment.html'
     fields = '__all__'
+    success_url = reverse_lazy('home')
